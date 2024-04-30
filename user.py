@@ -2,6 +2,8 @@ import os
 from fastapi import security
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBasicCredentials
 import jwt
+
+# from jose import JWTError
 from dotenv import load_dotenv
 from fastapi import APIRouter, Body, HTTPException, status, Depends
 from model import User
@@ -12,7 +14,7 @@ from user_manager import UserManager
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
-SECRET_KEY = os.getenv("MY_JWT_SECRET_KEY")
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 
 def generate_token(username: str) -> str:
@@ -60,16 +62,6 @@ def get_current_username(credentials: HTTPBasicCredentials = Depends(security)):
     return user["username"]
 
 
-def is_admin(current_user: User = Depends(get_current_username)):
-    if current_user and current_user.is_admin:
-        return True
-    else:
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="You do not have permission to perform this action.",
-        )
-
-
 # User authentication dependency
 async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends()):
     if credentials.scheme.lower() != "bearer":
@@ -106,13 +98,35 @@ async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends()
                 detail="User not found",
                 headers={"WWW-Authenticate": "Bearer"},
             )
+        print("Found User get_current_user:")
         return user
-    except JWTError as e:
+    except:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Invalid token",
             headers={"WWW-Authenticate": "Bearer"},
         )
+
+
+def is_admin(current_user: User = Depends(get_current_username)):
+    if current_user and current_user.is_admin:
+        return True
+    else:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="You do not have permission to perform this action.",
+        )
+
+
+# async def get_current_user(user: User = Depends(UserManager.authenticate_user)):
+#     if user:
+#         return user
+#     else:
+#         raise HTTPException(
+#             status_code=status.HTTP_401_UNAUTHORIZED,
+#             detail="Invalid username or password",
+#             headers={"WWW-Authenticate": "Bearer"},
+#         )
 
 
 @user_router.get("/users/me")

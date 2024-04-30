@@ -53,7 +53,6 @@ async function getCommissions() {
       throw new Error('Failed to fetch commissions');
     }
     const commissions = await response.json();
-    // logCommissionIds(commissions);
     data = commissions.commissions;
     console.log(commissions);
     refreshCommissions();
@@ -62,35 +61,12 @@ async function getCommissions() {
   }
 }
 
-// async function getCommissions() {
-//   try {
-//     const response = await fetch(`${api}/commissions`);
-//     if (!response.ok) {
-//       throw new Error('Failed to fetch commissions');
-//     }
-//     const commissions = await response.json();
-
-//     // Convert the ObjectId to a string for each commission
-//     commissions.commissions.forEach((commission) => {
-//       commission._id = commission._id.toString();
-//     });
-
-//     logCommissionIds(commissions);
-//     data = commissions.commissions;
-//     console.log(commissions);
-//     refreshCommissions();
-//   } catch (error) {
-//     console.error('Error fetching commissions:', error);
-//   }
-// }
-
 
 // Function to refresh commissions on the UI
 function refreshCommissions() {
   console.log(data);
   commissions.innerHTML = '';
   Array.from(data).forEach((x) => {
-    // const id = x._id ? x._id.toString() : '';
     console.log(x._id);
     commissions.innerHTML += `
       <div id="commission-${x._id}">
@@ -135,9 +111,6 @@ async function tryEditCommission(id) {
 
     const selectedStatus = document.getElementById('dropdownEdit').innerText.trim();
 
-    console.log(selectedStatus);
-       // Map the selected status value to the corresponding key
-
     const updatedCommission = {
       title: document.getElementById('title-edit').value,
       description: document.getElementById('desc-edit').value,
@@ -146,8 +119,6 @@ async function tryEditCommission(id) {
       color: document.getElementById('myBarEdit').style.backgroundColor,
       date: document.getElementById('myDateUpdate').value,
     };
-
-    console.log(updatedCommission)
 
     try {
       // Send a PUT request to update the commission in the database
@@ -164,7 +135,8 @@ async function tryEditCommission(id) {
       }
 
       // Refresh the commissions list after updating
-      await refreshCommissions();
+      getCommissions();
+      refreshCommissions();
     } catch (error) {
       console.error('Error updating commission:', error);
       // Handle error
@@ -289,6 +261,7 @@ document.getElementById('form-add').addEventListener('submit', async (e) => {
       if (!response.ok) {
         throw new Error('Failed to add commission');
       }
+      getCommissions();
       refreshCommissions();
 
       // Close Modal

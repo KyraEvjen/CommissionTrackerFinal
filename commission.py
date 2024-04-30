@@ -102,13 +102,13 @@ async def get_commission(commission_id: str):
 async def update_commission(
     commission_id: str,
     updated_commission: CommissionRequest,
-    current_user: User = Depends(get_current_user),
+    # current_user: User = Depends(get_current_user),
 ):
-    if not is_admin(current_user):
-        raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN,
-            detail="You do not have permission to perform this action.",
-        )
+    # if not is_admin(current_user):
+    #     raise HTTPException(
+    #         status_code=status.HTTP_403_FORBIDDEN,
+    #         detail="You do not have permission to perform this action.",
+    #     )
     try:
         # Convert commission_id to ObjectId
         commission_object_id = ObjectId(commission_id)
@@ -155,10 +155,11 @@ async def update_commission(
     "/commissions/{commission_id}", response_description="Delete commission by ID"
 )
 async def delete_commission(
-    commission_id: str, current_user: str = Depends(get_current_user)
+    commission_id: str,
+    # current_user: User = Depends(get_current_user)
 ):
-    if not (is_admin(current_user)):
-        raise HTTPException(status_code=403, detail="Unauthorized")
+    # if not (is_admin(current_user)):
+    #     raise HTTPException(status_code=403, detail="Unauthorized")
     try:
         print("Deleting commission with ID:", commission_id)
         result = collection.delete_one({"_id": ObjectId(commission_id)})
