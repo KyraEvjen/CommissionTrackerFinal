@@ -71,7 +71,6 @@ document.getElementById('form-add').addEventListener('submit', async (e) => {
 
       const portfolioData = {
         name: nameInput.value,
-        creator: "Artist",
         image: imgString,
         description: descrInput.value
       };
@@ -154,7 +153,6 @@ document.getElementById('form-add').addEventListener('submit', async (e) => {
   
       const updatedPortfolio = {
         name: document.getElementById('name-edit').value,
-        creator: "your mother",
         description: document.getElementById('description-edit').value,
         image: document.getElementById('image-edit').value,
       };

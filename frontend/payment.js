@@ -22,9 +22,7 @@ async function getPayments() {
         throw new Error('Failed to fetch payments');
       }
       const payments = await response.json();
-
       data = payments.payments;
-
       refreshPayments();
     } catch (error) {
       console.error('Error fetching payments:', error);
@@ -33,14 +31,14 @@ async function getPayments() {
 
 document.getElementById('form-add').addEventListener('submit', async (e) => {
     e.preventDefault();
-
-
-      const paymentData = {
-        // clientId: "Client ID",
-        // artistId: "Artist ID",
-        status: statusInput,
+      
+    const paymentData = {
+        status: statusInput.value,
         amount: amtInput.value
       };
+
+      console.log(paymentData);
+
         const response = await fetch(`${api}/payments`, {
           method: 'POST',
           headers: {
@@ -48,25 +46,22 @@ document.getElementById('form-add').addEventListener('submit', async (e) => {
           },
           body: JSON.stringify(paymentData)
         });
-        refreshPayments();
+        
         if (!response.ok) {
           throw new Error('Failed to add payment');
         }
-  
-        //addCommission(commissionData);
+
+        getPayments();
         refreshPayments();
   
         // Close Modal
         let add = document.getElementById('add');
         add.setAttribute('data-bs-dismiss', 'modal');
-        add.click();
         (() => {
           add.setAttribute('data-bs-dismiss', '');
         })();
   
-        // Reset the Text and Progress Bar
-        getPayments();
-        refreshPayments();
+        // Reset the Text and Progress Bar;
 
       } 
   );
@@ -75,7 +70,6 @@ document.getElementById('form-add').addEventListener('submit', async (e) => {
   
   // Function to refresh portys on the UI
   function refreshPayments() {
-  
     payments.innerHTML = '';
     Array.from(data).forEach((x) => {
       payments.innerHTML += `
@@ -93,78 +87,60 @@ document.getElementById('form-add').addEventListener('submit', async (e) => {
         </div>
       `;
     });
-    resetForm();
+  resetForm();
   }
+
 
   async function tryEditPayment(id) {
-    // Find the commission with the specified ID
     const payment = data.find(obj => obj._id === id);
   
-    // Populate the modal with the commission details
     document.getElementById('status-edit').value = payment.status;
     document.getElementById('amount-edit').value = payment.amount;
-  
-    // Set the commission ID in the modal title
     document.getElementById('payment-id').textContent = id;
-  
-    // Add event listener for the form submission
-    const formEdit = document.getElementById('form-edit');
-    formEdit.addEventListener('submit', async (event) => {
-      event.preventDefault();
-  
+}
 
-         // Map the selected status value to the corresponding key
-  
-      const updatedPayment = {
-        status: document.getElementById('status-edit'),
-        artistId: "artist",
-        clientId: "client",
+// Attach event listener for form submission outside of tryEditPayment
+const formEdit = document.getElementById('form-edit');
+formEdit.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const id = document.getElementById('payment-id').textContent;
+    const updatedPayment = {
+        status: document.getElementById('status-edit').value,
         amount: document.getElementById('amount-edit').value,
+    };
 
-      };
-      console.log(updatedPayment);
-  
-      try {
-        // Send a PUT request to update the port in the database
-        const response = await fetch(`/payments/${id}`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(updatedPayment),
+    try {
+        const response = await fetch(`${api}/payments/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedPayment),
         });      
+
+        if (!response.ok) {
+            throw new Error('Failed to update payment');
+        }
+
+        // Refresh payments after successful update
         getPayments();
         refreshPayments();
-  
-  
-        if (!response.ok) {
-          throw new Error('Failed to update payment');
-        }
-  
-        // Refresh the portys list after updating
-        refreshPayments();
-  
-        let update = document.getElementById('edit');
-        update.setAttribute('data-bs-dismiss', 'modal');
-        update.click();
-        (() => {
-          update.setAttribute('data-bs-dismiss', '');
-        })();
-  
-        refreshPayments();
-  
-      } catch (error) {
+
+    } catch (error) {
         console.error('Error updating payment:', error);
         // Handle error
-      }
-    });
-  }
+    }
+});
 
-  function resetForm() {
+function editPayment(id) {
+    tryEditPayment(id);
+}
+
+function resetForm() {
     amtInput.value = '';
-    statusInput = '';
-  }
-getPayments();
+    statusInput.value = '';
+}
 
   async function deletePayment(id) {
 
@@ -181,3 +157,5 @@ getPayments();
       console.error('Error deleting payments:', error);
     }
   }
+
+getPayments();

@@ -54,7 +54,6 @@ async function getCommissions() {
     }
     const commissions = await response.json();
     data = commissions.commissions;
-    console.log(commissions);
     refreshCommissions();
   } catch (error) {
     console.error('Error fetching commissions:', error);
@@ -377,5 +376,3 @@ function getBackgroundColor(option) {
 
   return colorMap[option] || "gray"; // Default to gray if option not found
 }
-
-//LOGIN JAVASCRIPT

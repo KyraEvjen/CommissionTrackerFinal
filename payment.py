@@ -25,12 +25,10 @@ if "payments" not in db.list_collection_names():
 
 @payment_router.post("/payments", status_code=status.HTTP_201_CREATED)
 async def add_payment(payment: PaymentRequest) -> dict:
-    # Connect to MongoDB (use your actual connection details)
     clientPost = AsyncIOMotorClient(mongo_uri)
     dbPost = clientPost["CommissionTracker"]
     collectionPost = dbPost["payments"]
 
-    # Insert the porty into MongoDB
     result = await collectionPost.insert_one(payment.model_dump())
     print("object id: ", result.inserted_id)
     return {
@@ -44,7 +42,6 @@ async def get_payments() -> dict:
     try:
         data_list = []
         for item in collection.find({}):
-            # Include the "_id" field (converted to a string) in the portfol data
             item["_id"] = str(item["_id"])
 
             item["mongodb_id"] = item["_id"]
@@ -69,7 +66,9 @@ async def get_payment_by_id(id: str = Path(..., alias="_id")) -> dict:
         return None
 
 
-@payment_router.put("/payments/{payment_id}", response_description="Update porty by ID")
+@payment_router.put(
+    "/payments/{payment_id}", response_description="Update payment by ID"
+)
 async def update_payment(payment_id: str, updated_payment: PaymentRequest):
     try:
         # Convert payment_id to ObjectId
