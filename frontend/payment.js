@@ -65,8 +65,6 @@ document.getElementById('form-add').addEventListener('submit', async (e) => {
 
       } 
   );
-
-
   
   // Function to refresh portys on the UI
   function refreshPayments() {

@@ -36,7 +36,7 @@ class Portfolio(BaseModel):
 
 class PortfolioRequest(BaseModel):
     name: str
-    #  image: str
+    image: str
     description: str
 
 

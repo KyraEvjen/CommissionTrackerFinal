@@ -102,13 +102,16 @@ async function tryEditCommission(id) {
 
   // Set the commission ID in the modal title
   document.getElementById('commission-id').textContent = id;
+}
 
   // Add event listener for the form submission
   const formEdit = document.getElementById('form-edit');
   formEdit.addEventListener('submit', async (event) => {
     event.preventDefault();
-
+  
     const selectedStatus = document.getElementById('dropdownEdit').innerText.trim();
+
+    const id = document.getElementById('commission-id').textContent;
 
     const updatedCommission = {
       title: document.getElementById('title-edit').value,
@@ -141,7 +144,10 @@ async function tryEditCommission(id) {
       // Handle error
     }
   });
-}
+
+  function editCommission(id){
+    tryEditCommission(id);
+  }
 
 
 // Function to get status text based on option key

@@ -39,6 +39,8 @@ function previewFiles()
 
 function tryAdd() {
     let msg = document.getElementById('msg');
+    const preview = document.querySelector("#preview");
+    preview.innerHTML = '';
     msg.innerHTML = '';
   }
 
@@ -98,10 +100,12 @@ document.getElementById('form-add').addEventListener('submit', async (e) => {
         })();
   
         // Reset the Text and Progress Bar
-        imgString = '';
+        preview = document.querySelector("#preview");
+        preview.innerHTML = '';
+        msg = document.getElementById('msg');
+        msg.innerHTML = '';
         getPortfolios();
         refreshPortfolios();
-
       } 
   });
 
@@ -115,7 +119,7 @@ document.getElementById('form-add').addEventListener('submit', async (e) => {
       portfolios.innerHTML += `
       <div class = "responsive">
       <div class="gallery">
-            <div id="portfolio-${x.id}">
+            <div id="portfolio-${x._id}">
             <img src =${x.image} width = "200">
             <div class = "description">${x.description}</div>
             <pre class="fw-bold fs-4">${x.name}</pre>
@@ -139,65 +143,58 @@ document.getElementById('form-add').addEventListener('submit', async (e) => {
     document.getElementById('name-edit').value = portfolio.name;
     document.getElementById('description-edit').value = portfolio.description;
     document.getElementById('image-edit').value = portfolio.image;
-  
-    // Set the commission ID in the modal title
     document.getElementById('portfolio-id').textContent = id;
+  }
   
     // Add event listener for the form submission
-    const formEdit = document.getElementById('form-edit');
+  const formEdit = document.getElementById('form-edit');
     formEdit.addEventListener('submit', async (event) => {
-      event.preventDefault();
+    event.preventDefault();
   
-
-         // Map the selected status value to the corresponding key
-  
-      const updatedPortfolio = {
+    const updatedPortfolio = {
         name: document.getElementById('name-edit').value,
         description: document.getElementById('description-edit').value,
         image: document.getElementById('image-edit').value,
-      };
-      console.log(updatedPortfolio);
+    };
+
+    const id = document.getElementById('portfolio-id').textContent;
   
-      try {
+    try {
         // Send a PUT request to update the port in the database
-        const response = await fetch(`/portfolios/${id}`, {
+        const response = await fetch(`${api}/portfolios/${id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(updatedPortfolio),
-        });      
-        getPortfolios();
-        refreshPortfolios();
+      });      
+
   
-  
-        if (!response.ok) {
+      if (!response.ok) {
           throw new Error('Failed to update portfolio');
-        }
-  
-        // Refresh the portys list after updating
-        refreshPortfolios();
-  
-        let update = document.getElementById('edit');
-        update.setAttribute('data-bs-dismiss', 'modal');
-        update.click();
-        (() => {
-          update.setAttribute('data-bs-dismiss', '');
-        })();
-  
-        refreshPortfolios();
+      }
+        
+      getPortfolios();
+      refreshPortfolios();
   
       } catch (error) {
         console.error('Error updating portfolio:', error);
         // Handle error
       }
     });
+
+  function editPorfolio(id){
+    tryEditPortfolio(id);
   }
 
   function resetForm() {
     nameInput.value = '';
     descrInput.value = '';
     imgString = ''
+    preview = document.querySelector("#preview");
+    preview.innerHTML = '';
+    msg = document.getElementById('msg');
+    msg.innerHTML = '';
   }
 getPortfolios();
 
