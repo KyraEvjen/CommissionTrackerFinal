@@ -34,7 +34,7 @@ class UserManager:
         return user_data
 
     async def authenticate_user(self, username: str, password: str):
-        print("Auth_user Running")
+
         try:
             user_data = await self.get_user_by_username(username)
             if user_data:

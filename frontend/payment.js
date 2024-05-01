@@ -10,7 +10,6 @@ const api = 'http://127.0.0.1:8000';
 function tryAdd() {
     let msg = document.getElementById('msg');
     msg.innerHTML = '';
-    console.log("works");
   }
 
   //MONGODB THINGS
@@ -36,8 +35,6 @@ document.getElementById('form-add').addEventListener('submit', async (e) => {
         status: statusInput.value,
         amount: amtInput.value
       };
-
-      console.log(paymentData);
 
         const response = await fetch(`${api}/payments`, {
           method: 'POST',

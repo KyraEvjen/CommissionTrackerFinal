@@ -1,9 +1,7 @@
+import os
+from dotenv import load_dotenv
 from fastapi import APIRouter, Path, HTTPException, status
 from model import Portfolio, PortfolioRequest
-from typing import Any
-from pydantic_settings import BaseSettings, SettingsConfigDict
-from beanie import init_beanie, PydanticObjectId
-from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from motor.motor_asyncio import AsyncIOMotorClient
 from pymongo import MongoClient
@@ -18,30 +16,32 @@ logger = logging.getLogger(__name__)
 portfolio_list = []
 max_id: int = 0
 
-client = MongoClient("mongodb+srv://bnipper54:j4qFSnTKPtxqLxH8@test.bhkjnan.mongodb.net/")
-db = client["your-database-name"]
+load_dotenv()
+mongo_uri = os.getenv("MONGO_URI")
+client = MongoClient(mongo_uri)
+db = client["CommissionTracker"]
 collection = db["portfolios"]
+
+
+if "portfolios" not in db.list_collection_names():
+    db.create_collection("portfolios")
+
 
 @portfolio_router.post("/portfolios", status_code=status.HTTP_201_CREATED)
 async def add_portfolio(portfolio: PortfolioRequest) -> dict:
     # Connect to MongoDB (use your actual connection details)
-    clientPost = AsyncIOMotorClient(
-        "mongodb+srv://bnipper54:j4qFSnTKPtxqLxH8@test.bhkjnan.mongodb.net/"
-    )
-    dbPost = clientPost["your-database-name"]
+    clientPost = AsyncIOMotorClient(mongo_uri)
+    dbPost = clientPost["CommissionTracker"]
     collectionPost = dbPost["portfolios"]
 
-    # Insert the porty into MongoDB
     result = await collectionPost.insert_one(portfolio.model_dump())
-    print("object id: ",result.inserted_id)
-    logger.info("Creating a portfolio item.")
     return {
         "message": "Portfolio added successfully",
         "item_id": str(result.inserted_id),
     }
 
 
-@portfolio_router.get("/portfolios", status_code = status.HTTP_200_OK)
+@portfolio_router.get("/portfolios", status_code=status.HTTP_200_OK)
 async def get_portfolios() -> dict:
     try:
         data_list = []
@@ -55,7 +55,6 @@ async def get_portfolios() -> dict:
         return {"portfolios": data_list}
     except Exception as e:
         return JSONResponse(content={"error": str(e)})
-    
 
 
 @portfolio_router.get("/portfolios/{id}")
@@ -72,8 +71,6 @@ async def get_portfolio_by_id(id: str = Path(..., alias="_id")) -> dict:
     except Exception as e:
         print(f"error fetching data: {e}")
         return None
-
-
 
 
 @portfolio_router.put(
@@ -119,6 +116,7 @@ async def update_portfolio(portfolio_id: str, updated_portfolio: PortfolioReques
 
         # Raise an HTTPException with a 500 status code
         raise HTTPException(status_code=500, detail="Internal Server Error")
+
 
 @portfolio_router.delete(
     "/portfolios/{portfolio_id}", response_description="Delete portfolio by ID"

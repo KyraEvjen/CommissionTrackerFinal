@@ -1,10 +1,9 @@
+import os
+from dotenv import load_dotenv
 from fastapi import APIRouter, Path, HTTPException, status
+from fastapi.security import HTTPBasic
 from model import Commission, CommissionRequest
-from typing import Any
 import logging
-from pydantic_settings import BaseSettings, SettingsConfigDict
-from beanie import init_beanie, PydanticObjectId
-from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from motor.motor_asyncio import AsyncIOMotorClient
 from pymongo import MongoClient
@@ -18,31 +17,35 @@ logger = logging.getLogger(__name__)
 commission_list = []
 max_id: int = 0
 
-client = MongoClient("mongodb+srv://bnipper54:j4qFSnTKPtxqLxH8@test.bhkjnan.mongodb.net/")
-db = client["your-database-name"]
+load_dotenv()
+mongo_uri = os.getenv("MONGO_URI")
+client = MongoClient(mongo_uri)
+db = client["CommissionTracker"]
 collection = db["commissions"]
+users_collection = db["users"]
+
+if "commissions" not in db.list_collection_names():
+    db.create_collection("commissions")
+
+security = HTTPBasic()
+
 
 @commission_router.post("/commissions", status_code=status.HTTP_201_CREATED)
 async def add_commission(commission: CommissionRequest) -> dict:
-    logger.info(f"creating an event.")
     # Connect to MongoDB (use your actual connection details)
-    clientPost = AsyncIOMotorClient(
-        "mongodb+srv://bnipper54:j4qFSnTKPtxqLxH8@test.bhkjnan.mongodb.net/"
-    )
-    dbPost = clientPost["your-database-name"]
-    collectionPost = dbPost["commissions"]
+    clientPost = AsyncIOMotorClient(mongo_uri)
+    db = clientPost["CommissionTracker"]
+    collectionPost = db["commissions"]
 
     # Insert the commission into MongoDB
     result = await collectionPost.insert_one(commission.model_dump())
-    print("object id: ",result.inserted_id)
-    logger.info("creating a commission.")
     return {
         "message": "Commission added successfully",
         "item_id": str(result.inserted_id),
     }
 
 
-@commission_router.get("/commissions", status_code = status.HTTP_200_OK)
+@commission_router.get("/commissions", status_code=status.HTTP_200_OK)
 async def get_commissions() -> dict:
 
     try:
@@ -57,6 +60,7 @@ async def get_commissions() -> dict:
     except Exception as e:
         return JSONResponse(content={"error": str(e)})
 
+
 @commission_router.get("/commissions/{id}")
 async def get_commission_by_id(id: str = Path(..., alias="_id")) -> dict:
     try:
@@ -66,14 +70,11 @@ async def get_commission_by_id(id: str = Path(..., alias="_id")) -> dict:
         results = []
         for doc in comm:
             doc["_id"] = str(doc["_id"])
-            print("doc id: ", doc["_id"])
             results.append(doc)
         return results
     except Exception as e:
         print(f"error fetching data: {e}")
         return None
-
-
 
 
 @commission_router.put(
@@ -120,6 +121,7 @@ async def update_commission(commission_id: str, updated_commission: CommissionRe
 
         # Raise an HTTPException with a 500 status code
         raise HTTPException(status_code=500, detail="Internal Server Error")
+
 
 @commission_router.delete(
     "/commissions/{commission_id}", response_description="Delete commission by ID"

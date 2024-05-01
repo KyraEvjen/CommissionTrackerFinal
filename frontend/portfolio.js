@@ -23,13 +23,11 @@ function previewFiles()
             image.title = file.name;
             image.src = reader.result;
             preview.appendChild(image);
-            //console.log(image.src);
             imgString = image.src;
           },
           false,
         );
         reader.readAsDataURL(file);
-        //console.log(file);
     }
     if (files) {
       Array.prototype.forEach.call(files, readAndPreview);

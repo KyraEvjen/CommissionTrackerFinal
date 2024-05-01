@@ -1,10 +1,7 @@
+import os
+from dotenv import load_dotenv
 from fastapi import APIRouter, Path, HTTPException, status
 from model import Payment, PaymentRequest
-from typing import Any
-
-from pydantic_settings import BaseSettings, SettingsConfigDict
-from beanie import init_beanie, PydanticObjectId
-from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from motor.motor_asyncio import AsyncIOMotorClient
 from pymongo import MongoClient
@@ -19,31 +16,31 @@ logger = logging.getLogger(__name__)
 payment_list = []
 max_id: int = 0
 
-client = MongoClient("mongodb+srv://bnipper54:j4qFSnTKPtxqLxH8@test.bhkjnan.mongodb.net/")
-db = client["your-database-name"]
+load_dotenv()
+mongo_uri = os.getenv("MONGO_URI")
+client = MongoClient(mongo_uri)
+db = client["CommissionTracker"]
 collection = db["payments"]
+
+
+if "payments" not in db.list_collection_names():
+    db.create_collection("payments")
+
 
 @payment_router.post("/payments", status_code=status.HTTP_201_CREATED)
 async def add_payment(payment: PaymentRequest) -> dict:
-    # Connect to MongoDB (use your actual connection details)
-    clientPost = AsyncIOMotorClient(
-        "mongodb+srv://bnipper54:j4qFSnTKPtxqLxH8@test.bhkjnan.mongodb.net/"
-    )
-    dbPost = clientPost["your-database-name"]
+    clientPost = AsyncIOMotorClient(mongo_uri)
+    dbPost = clientPost["CommissionTracker"]
     collectionPost = dbPost["payments"]
 
-    # Insert the porty into MongoDB
     result = await collectionPost.insert_one(payment.model_dump())
-    print("object id: ",result.inserted_id)
-    logger.info(f"creating a payment.")
-
     return {
         "message": "payment added successfully",
         "item_id": str(result.inserted_id),
     }
 
 
-@payment_router.get("/payments", status_code = status.HTTP_200_OK)
+@payment_router.get("/payments", status_code=status.HTTP_200_OK)
 async def get_payments() -> dict:
     try:
         data_list = []
@@ -57,7 +54,6 @@ async def get_payments() -> dict:
         return {"payments": data_list}
     except Exception as e:
         return JSONResponse(content={"error": str(e)})
-    
 
 
 @payment_router.get("/payments/{id}")
@@ -67,7 +63,6 @@ async def get_payment_by_id(id: str = Path(..., alias="_id")) -> dict:
         results = []
         for doc in comm:
             doc["_id"] = str(doc["_id"])
-            print("doc id: ", doc["_id"])
             results.append(doc)
         logger.info(f"viewing payment #{id}.")
 
@@ -77,11 +72,7 @@ async def get_payment_by_id(id: str = Path(..., alias="_id")) -> dict:
         return None
 
 
-
-
-@payment_router.put(
-    "/payments/{payment_id}", response_description="Update porty by ID"
-)
+@payment_router.put("/payments/{payment_id}", response_description="Update porty by ID")
 async def update_payment(payment_id: str, updated_payment: PaymentRequest):
     try:
         # Convert payment_id to ObjectId
@@ -122,6 +113,7 @@ async def update_payment(payment_id: str, updated_payment: PaymentRequest):
 
         # Raise an HTTPException with a 500 status code
         raise HTTPException(status_code=500, detail="Internal Server Error")
+
 
 @payment_router.delete(
     "/payments/{payment_id}", response_description="Delete payment by ID"

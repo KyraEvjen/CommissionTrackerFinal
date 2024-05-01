@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const formData = new FormData(loginForm);
         const username = formData.get("loginUsername");
         const password = formData.get("loginPassword");
-        console.log("Login form data:", { username, password });
         try {
             const response = await loginUser(username, password);
             alert("Login successful");
@@ -22,9 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const formData = new FormData(signupForm);
         const username = formData.get("signupUsername");
         const password = formData.get("signupPassword");
-
-        // Log the data before sending the request
-        console.log("Signup form data:", { username, password });
 
         try {
             const response = await signupUser(username, password);

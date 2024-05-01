@@ -1,0 +1,52 @@
+2024-05-01 18:35:46,111 INFO commission:54 viewing 1 commissions.
+2024-05-01 18:35:46,112 INFO commission:54 viewing 2 commissions.
+2024-05-01 18:35:46,112 INFO commission:54 viewing 3 commissions.
+2024-05-01 18:35:46,113 INFO commission:54 viewing 4 commissions.
+2024-05-01 18:35:46,114 INFO commission:54 viewing 5 commissions.
+2024-05-01 18:35:54,779 INFO commission:131 deleting commission #662dbf5f4aacae023dd67a1d.
+2024-05-01 18:36:05,668 INFO commission:107 updating commission #662dc02d4aacae023dd67a1f.
+2024-05-01 18:36:05,714 INFO commission:54 viewing 1 commissions.
+2024-05-01 18:36:05,715 INFO commission:54 viewing 2 commissions.
+2024-05-01 18:36:05,715 INFO commission:54 viewing 3 commissions.
+2024-05-01 18:36:05,716 INFO commission:54 viewing 4 commissions.
+2024-05-01 18:36:12,240 INFO commission:131 deleting commission #662ed20b85522f1cee55fe2f.
+2024-05-01 18:36:19,693 INFO portfolio:53 viewing 1 portfolio items.
+2024-05-01 18:41:29,980 INFO commission:58 viewing 1 commissions.
+2024-05-01 18:41:29,981 INFO commission:58 viewing 2 commissions.
+2024-05-01 18:41:32,922 INFO commission:135 deleting commission #6632c75cc8c2c79404aa9b30.
+2024-05-01 18:41:40,183 INFO pymongo.serverSelection:96 {"message": "Waiting for suitable server to become available", "selector": "<function writable_server_selector at 0x000001C934F19C60>", "operation": "insert", "topologyDescription": "<TopologyDescription id: 6632d334f53ac568ac6a36cf, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-l0hmbsi-shard-00-00.mbupl2a.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-l0hmbsi-shard-00-01.mbupl2a.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-l0hmbsi-shard-00-02.mbupl2a.mongodb.net', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "6632d334f53ac568ac6a36cf"}, "remainingTimeMS": 30}
+2024-05-01 18:41:40,632 INFO commission:58 viewing 1 commissions.
+2024-05-01 18:41:40,634 INFO commission:58 viewing 2 commissions.
+2024-05-01 18:41:50,210 INFO portfolio:56 viewing 2 portfolio items.
+2024-05-01 18:41:51,928 INFO portfolio:131 Deleting portfolio #6632c68ac8c2c79404aa9b2e.
+2024-05-01 18:41:54,554 INFO payment:54 viewing 4 commissions.
+2024-05-01 18:41:56,313 INFO payment:128 Deleting payment #663299473ea44fab66c3d765
+2024-05-01 18:41:57,320 INFO payment:128 Deleting payment #6632c804c8c2c79404aa9b36
+2024-05-01 18:41:58,505 INFO portfolio:56 viewing 1 portfolio items.
+2024-05-01 18:41:59,061 INFO commission:58 viewing 1 commissions.
+2024-05-01 18:41:59,061 INFO commission:58 viewing 2 commissions.
+2024-05-01 18:47:00,442 INFO commission:58 viewing 1 commissions.
+2024-05-01 18:47:00,443 INFO commission:58 viewing 2 commissions.
+2024-05-01 18:47:36,776 INFO commission:134 deleting commission #6632c76ec8c2c79404aa9b32.
+2024-05-01 18:47:48,997 INFO commission:110 updating commission #6632d334f53ac568ac6a36d0.
+2024-05-01 18:47:49,031 INFO commission:58 viewing 1 commissions.
+2024-05-01 18:47:57,772 INFO commission:58 viewing 1 commissions.
+2024-05-01 18:48:08,948 INFO pymongo.serverSelection:96 {"message": "Waiting for suitable server to become available", "selector": "<function writable_server_selector at 0x00000140CBB19C60>", "operation": "insert", "topologyDescription": "<TopologyDescription id: 6632d4b8177cc51eeeb2cb59, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-l0hmbsi-shard-00-00.mbupl2a.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-l0hmbsi-shard-00-01.mbupl2a.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-l0hmbsi-shard-00-02.mbupl2a.mongodb.net', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "6632d4b8177cc51eeeb2cb59"}, "remainingTimeMS": 30}
+2024-05-01 18:48:09,468 INFO commission:58 viewing 1 commissions.
+2024-05-01 18:48:09,468 INFO commission:58 viewing 2 commissions.
+2024-05-01 18:48:29,050 INFO commission:110 updating commission #6632d334f53ac568ac6a36d0.
+2024-05-01 18:48:29,083 INFO commission:58 viewing 1 commissions.
+2024-05-01 18:48:29,083 INFO commission:58 viewing 2 commissions.
+2024-05-01 18:48:35,852 INFO portfolio:54 viewing 1 portfolio items.
+2024-05-01 18:48:45,572 INFO pymongo.serverSelection:96 {"message": "Waiting for suitable server to become available", "selector": "<function writable_server_selector at 0x00000140CBB19C60>", "operation": "insert", "topologyDescription": "<TopologyDescription id: 6632d4dd177cc51eeeb2cb5b, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-l0hmbsi-shard-00-00.mbupl2a.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-l0hmbsi-shard-00-01.mbupl2a.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-l0hmbsi-shard-00-02.mbupl2a.mongodb.net', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "6632d4dd177cc51eeeb2cb5b"}, "remainingTimeMS": 30}
+2024-05-01 18:48:46,215 INFO portfolio:54 viewing 2 portfolio items.
+2024-05-01 18:48:48,440 INFO portfolio:129 Deleting portfolio #6632c79ec8c2c79404aa9b34.
+2024-05-01 18:48:52,540 INFO portfolio:106 Updating portfolio #6632d4dd177cc51eeeb2cb5c.
+2024-05-01 18:48:52,591 INFO portfolio:54 viewing 1 portfolio items.
+2024-05-01 18:48:54,905 INFO payment:53 viewing 2 commissions.
+2024-05-01 18:48:56,647 INFO payment:126 Deleting payment #6632c81ac8c2c79404aa9b3a
+2024-05-01 18:49:01,288 INFO payment:103 Updating payment #6632c822c8c2c79404aa9b3c.
+2024-05-01 18:49:01,322 INFO payment:53 viewing 1 commissions.
+2024-05-01 18:49:08,251 INFO pymongo.serverSelection:96 {"message": "Waiting for suitable server to become available", "selector": "<function writable_server_selector at 0x00000140CBB19C60>", "operation": "insert", "topologyDescription": "<TopologyDescription id: 6632d4f4177cc51eeeb2cb5d, topology_type: ReplicaSetNoPrimary, servers: [<ServerDescription ('ac-l0hmbsi-shard-00-00.mbupl2a.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-l0hmbsi-shard-00-01.mbupl2a.mongodb.net', 27017) server_type: Unknown, rtt: None>, <ServerDescription ('ac-l0hmbsi-shard-00-02.mbupl2a.mongodb.net', 27017) server_type: Unknown, rtt: None>]>", "clientId": {"$oid": "6632d4f4177cc51eeeb2cb5d"}, "remainingTimeMS": 30}
+2024-05-01 18:49:08,649 INFO payment:53 viewing 2 commissions.
+2024-05-01 18:49:20,307 INFO payment:126 Deleting payment #6632d4f4177cc51eeeb2cb5e

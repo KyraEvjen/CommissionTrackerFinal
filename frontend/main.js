@@ -32,17 +32,6 @@ function tryAdd() {
   msg.innerHTML = '';
 }
 
-function logCommissionIds(commissions) {
-  // Check if 'commissions' is an object and has a 'commissions' key
-  if (commissions && commissions.commissions && Array.isArray(commissions.commissions)) {
-    commissions.commissions.forEach(commission => {
-      console.log(commission._id);
-    });
-  } else {
-    console.error('Invalid commissions data:', commissions);
-  }
-}
-
 
 //MONGODB THINGS
 // Function to fetch commissions from the backend
@@ -63,10 +52,8 @@ async function getCommissions() {
 
 // Function to refresh commissions on the UI
 function refreshCommissions() {
-  console.log(data);
   commissions.innerHTML = '';
   Array.from(data).forEach((x) => {
-    console.log(x._id);
     commissions.innerHTML += `
       <div id="commission-${x._id}">
         <span class="fw-bold fs-4">${x.title}</span>
@@ -164,7 +151,6 @@ function getStatusText(option) {
 
 // Function to delete a commission
 async function deleteCommission(id) {
-  console.log(`${api}/commissions/${id}`);
   try {
     const response = await fetch(`${api}/commissions/${id}`, {
       method: 'DELETE',
@@ -251,8 +237,6 @@ document.getElementById('form-add').addEventListener('submit', async (e) => {
       color: barColor,
       date: dateStarted
     };
-
-    console.log(commissionData);
 
     try {
       const response = await fetch(`${api}/commissions`, {

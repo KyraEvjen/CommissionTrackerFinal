@@ -21,7 +21,6 @@ def generate_token(username: str) -> str:
     token_expiry = datetime.utcnow() + timedelta(hours=1)  # Token expires in 1 hour
     payload = {"username": username, "exp": token_expiry}
     token = jwt.encode(payload, SECRET_KEY, algorithm="HS256")
-    print("Token Generated:" + token)
     return token
 
 
@@ -98,7 +97,6 @@ async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends()
                 detail="User not found",
                 headers={"WWW-Authenticate": "Bearer"},
             )
-        print("Found User get_current_user:")
         return user
     except:
         raise HTTPException(
@@ -150,8 +148,6 @@ async def signup(user: User):
 
 @user_router.post("/login")
 async def login(username: str = Body(...), password: str = Body(...)):
-    print("Received login request with username:", username)
-    print("Received login request with password:", password)
 
     # Authenticate the user with the provided username and password
     authenticated_user = await user_manager.authenticate_user(username, password)
