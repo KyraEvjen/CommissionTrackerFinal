@@ -24,9 +24,9 @@ Create an .env file with your MongoDB connection, MONGO_URI and a SECRET_KEY.
 
 _Endpoints_
 
-Add Commission, POST /commissions
+-Add Commission, POST /commissions
 
-Adds a new commission to the database.
+-Adds a new commission to the database.
 
 Get Commissions, GET /commissions
 
