@@ -47,6 +47,7 @@ Logging is configured using the logging_setup module.
 CORS (Cross-Origin Resource Sharing) is enabled to allow requests from any origin.
 Static files (e.g., HTML, CSS, JavaScript) are served from the frontend directory.
 
+
 model.py
 payment.py
 portoflio.py
