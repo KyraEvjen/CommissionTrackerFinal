@@ -16,23 +16,23 @@ Create an .env file with your MongoDB connection, MONGO_URI and a SECRET_KEY.
 ![image](https://github.com/KyraEvjen/CommissionTrackerFinal/assets/156963640/03cc71dc-9321-4c4d-b04e-587052cb758b)
 **Portfolio Page**
 ![image](https://github.com/KyraEvjen/CommissionTrackerFinal/assets/156963640/95beaee6-df9d-4a7f-80cd-4a8847d191e7)
-
+**Add Commission Model**
+**Add Portfolio Item Model**
 
 **Backend Code**
 
 **Commission.py**
 
 _Endpoints_
-
-- Add Commission, POST /commissions
+Add Commission, POST /commissions
 - Adds a new commission to the database.
-- Get Commissions, GET /commissions
+Get Commissions, GET /commissions
 - Retrieves all commissions from the database.
-- Get Commission by ID, GET /commissions/{id}
+Get Commission by ID, GET /commissions/{id}
 - Retrieves a commission by its ID from the database.
-- Update Commission, PUT /commissions/{commission_id}
+Update Commission, PUT /commissions/{commission_id}
 - Updates an existing commission by its ID.
-- Delete Commission, DELETE /commissions/{commission_id}
+Delete Commission, DELETE /commissions/{commission_id}
 - Deletes a commission by its ID.
 
 
@@ -46,33 +46,20 @@ File Logging: Logs are saved to a file named app.log in the logs directory. Log 
 **main.py** 
 
 _Endpoints_
-
-/: Displays the login page.
-
-/commissions: Handles commission-related operations.
-
-/portfolios: Handles portfolio-related operations.
-
-/payments: Handles payment-related operations.
-
-/users: Handles user-related operations.
+- /: Displays the login page.
+- /commissions: Handles commission-related operations.
+- /portfolios: Handles portfolio-related operations.
+- /payments: Handles payment-related operations.
+- /users: Handles user-related operations.
 
 _Structure_
-
-main.py: Contains the FastAPI application setup.
-
-commission.py: Defines commission-related endpoints and logic.
-
-portfolio.py: Defines portfolio-related endpoints and logic.
-
-payment.py: Defines payment-related endpoints and logic.
-
-user.py: Defines user-related endpoints and logic.
-
-frontend/: Contains frontend files (e.g., HTML, CSS, JavaScript).
-
-Logging is configured using the logging_setup module.
-
+- main.py: Contains the FastAPI application setup.
+- commission.py: Defines commission-related endpoints and logic.
+- portfolio.py: Defines portfolio-related endpoints and logic.
+- payment.py: Defines payment-related endpoints and logic.
+- user.py: Defines user-related endpoints and logic.
+- frontend/: Contains frontend files (e.g., HTML, CSS, JavaScript).
+- Logging is configured using the logging_setup module.
 CORS (Cross-Origin Resource Sharing) is enabled to allow requests from any origin.
 
 Static files (e.g., HTML, CSS, JavaScript) are served from the frontend directory.
@@ -141,47 +128,34 @@ Represents a request body for creating or updating a payment with the following 
 Routes
 
 POST /payments
-
-Creates a new payment.
-
+- Creates a new payment.
 GET /payments
-
-Retrieves all payments.
-
+- Retrieves all payments.
 GET /payments/{id}
-
-Retrieves a payment by its ID.
-
+- Retrieves a payment by its ID.
 PUT /payments/{payment_id}
-
-Updates a payment by its ID.
-
+- Updates a payment by its ID.
 DELETE /payments/{payment_id}
-
-Deletes a payment by its ID.
+- Deletes a payment by its ID.
 
 **portoflio.py**
 
 Routes
 
 POST /portfolios
-Creates a new portfolio.
-
+- Creates a new portfolio.
 GET /portfolios
-Retrieves all portfolios.
-
+- Retrieves all portfolios.
 GET /portfolios/{id}
-Retrieves a portfolio by its ID.
-
+- Retrieves a portfolio by its ID.
 PUT /portfolios/{portfolio_id}
-Updates a portfolio by its ID.
-
+- Updates a portfolio by its ID.
 DELETE /portfolios/{portfolio_id}
-Deletes a portfolio by its ID.
+- Deletes a portfolio by its ID.
 
 **security.py**
-The hash_password function takes a plain text password as input and returns its hashed version.
-The verify_password function takes a plain text password and its hashed version as inputs and returns True if the password matches the hash, otherwise False.
+- The hash_password function takes a plain text password as input and returns its hashed version.
+- The verify_password function takes a plain text password and its hashed version as inputs and returns True if the password matches the hash, otherwise False.
 
 **user_manager.py**
 
