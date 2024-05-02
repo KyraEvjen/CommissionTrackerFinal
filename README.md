@@ -66,7 +66,7 @@ _Endpoints_
 
 /users: Handles user-related operations.
 
-**Structure**
+_Structure_
 
 main.py: Contains the FastAPI application setup.
 
