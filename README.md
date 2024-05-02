@@ -88,12 +88,109 @@ Static files (e.g., HTML, CSS, JavaScript) are served from the frontend director
 
 
 **model.py**
+Represents a commission with the following fields:
+- `_id`: Commission ID
+- `mongodb_id`: MongoDB ID (aliased as `_id`)
+- `title`: Commission title
+- `description`: Commission description
+- `status`: Commission status
+- `width`: Width of the commission
+- `color`: Color of the commission
+- `date`: Date of the commission
+
+Commission Request Model
+
+Represents a request body for creating or updating a commission with the following fields:
+- `title`: Commission title
+- `description`: Commission description
+- `status`: Commission status
+- `width`: Width of the commission
+- `color`: Color of the commission
+- `date`: Date of the commission
+
+User Model
+
+Represents a user with the following fields:
+- `username`: User's username
+- `password`: User's password
+
+Portfolio Model
+
+Represents a portfolio with the following fields:
+- `_id`: Portfolio ID
+- `mongodb_id`: MongoDB ID (aliased as `_id`)
+- `name`: Portfolio name
+- `image`: URL of the portfolio image
+- `description`: Portfolio description
+
+Portfolio Request Model
+
+Represents a request body for creating or updating a portfolio with the following fields:
+- `name`: Portfolio name
+- `image`: URL of the portfolio image
+- `description`: Portfolio description
+
+Payment Model
+
+Represents a payment with the following fields:
+- `_id`: Payment ID
+- `mongodb_id`: MongoDB ID (aliased as `_id`)
+- `status`: Payment status
+- `amount`: Payment amount
+
+Payment Request Model
+
+Represents a request body for creating or updating a payment with the following fields:
+- `status`: Payment status
+- `amount`: Payment amount
+
 
 **payment.py**
 
+Routes
+
+POST /payments
+
+Creates a new payment.
+
+GET /payments
+
+Retrieves all payments.
+
+GET /payments/{id}
+
+Retrieves a payment by its ID.
+
+PUT /payments/{payment_id}
+
+Updates a payment by its ID.
+
+DELETE /payments/{payment_id}
+
+Deletes a payment by its ID.
+
 **portoflio.py**
 
+Routes
+
+POST /portfolios
+Creates a new portfolio.
+
+GET /portfolios
+Retrieves all portfolios.
+
+GET /portfolios/{id}
+Retrieves a portfolio by its ID.
+
+PUT /portfolios/{portfolio_id}
+Updates a portfolio by its ID.
+
+DELETE /portfolios/{portfolio_id}
+Deletes a portfolio by its ID.
+
 **security.py**
+The hash_password function takes a plain text password as input and returns its hashed version.
+The verify_password function takes a plain text password and its hashed version as inputs and returns True if the password matches the hash, otherwise False.
 
 **user_manager.py**
 
