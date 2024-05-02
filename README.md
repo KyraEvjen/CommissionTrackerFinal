@@ -52,7 +52,10 @@ Console Logging: Logs are displayed on the console.
 File Logging: Logs are saved to a file named app.log in the logs directory. Log files are rotated daily.
 
 
-**main.py** _Endpoints_
+**main.py** 
+
+_Endpoints_
+
 /: Displays the login page.
 
 /commissions: Handles commission-related operations.
@@ -84,10 +87,14 @@ CORS (Cross-Origin Resource Sharing) is enabled to allow requests from any origi
 Static files (e.g., HTML, CSS, JavaScript) are served from the frontend directory.
 
 
-model.py
-payment.py
-portoflio.py
-security.py
-user_manager.py
+**model.py**
+
+**payment.py**
+
+**portoflio.py**
+
+**security.py**
+
+**user_manager.py**
 
 **Frontend Code**
