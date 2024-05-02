@@ -30,6 +30,18 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Signup failed. Username may already exist.");
         }
     });
+
+    // Show Signup Form
+    document.getElementById('showSignupForm').addEventListener('click', function() {
+        document.getElementById('loginFormContainer').classList.add('hidden');
+        document.getElementById('signupFormContainer').classList.remove('hidden');
+    });
+
+    // Show Login Form
+    document.getElementById('showLoginForm').addEventListener('click', function() {
+        document.getElementById('signupFormContainer').classList.add('hidden');
+        document.getElementById('loginFormContainer').classList.remove('hidden');
+    });
 });
 
 async function loginUser(username, password) { 
