@@ -26,12 +26,16 @@ Create an .env file with your MongoDB connection, MONGO_URI and a SECRET_KEY.
 _Endpoints_
 Add Commission, POST /commissions
 - Adds a new commission to the database.
+  
 Get Commissions, GET /commissions
 - Retrieves all commissions from the database.
+  
 Get Commission by ID, GET /commissions/{id}
 - Retrieves a commission by its ID from the database.
+  
 Update Commission, PUT /commissions/{commission_id}
 - Updates an existing commission by its ID.
+  
 Delete Commission, DELETE /commissions/{commission_id}
 - Deletes a commission by its ID.
 
@@ -129,12 +133,16 @@ Routes
 
 POST /payments
 - Creates a new payment.
+
 GET /payments
 - Retrieves all payments.
+  
 GET /payments/{id}
 - Retrieves a payment by its ID.
+
 PUT /payments/{payment_id}
 - Updates a payment by its ID.
+
 DELETE /payments/{payment_id}
 - Deletes a payment by its ID.
 
@@ -144,12 +152,16 @@ Routes
 
 POST /portfolios
 - Creates a new portfolio.
+  
 GET /portfolios
 - Retrieves all portfolios.
+  
 GET /portfolios/{id}
 - Retrieves a portfolio by its ID.
+  
 PUT /portfolios/{portfolio_id}
 - Updates a portfolio by its ID.
+  
 DELETE /portfolios/{portfolio_id}
 - Deletes a portfolio by its ID.
 
