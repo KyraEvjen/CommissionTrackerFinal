@@ -24,25 +24,16 @@ Create an .env file with your MongoDB connection, MONGO_URI and a SECRET_KEY.
 
 _Endpoints_
 
--Add Commission, POST /commissions
-
--Adds a new commission to the database.
-
-Get Commissions, GET /commissions
-
-Retrieves all commissions from the database.
-
-Get Commission by ID, GET /commissions/{id}
-
-Retrieves a commission by its ID from the database.
-
-Update Commission, PUT /commissions/{commission_id}
-
-Updates an existing commission by its ID.
-
-Delete Commission, DELETE /commissions/{commission_id}
-
-Deletes a commission by its ID.
+- Add Commission, POST /commissions
+- Adds a new commission to the database.
+- Get Commissions, GET /commissions
+- Retrieves all commissions from the database.
+- Get Commission by ID, GET /commissions/{id}
+- Retrieves a commission by its ID from the database.
+- Update Commission, PUT /commissions/{commission_id}
+- Updates an existing commission by its ID.
+- Delete Commission, DELETE /commissions/{commission_id}
+- Deletes a commission by its ID.
 
 
 **logging_setup.py**
