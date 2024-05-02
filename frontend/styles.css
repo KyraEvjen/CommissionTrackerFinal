@@ -1,0 +1,216 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  font-family: sans-serif;
+}
+
+.app {
+  height: 100%;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f2fa;
+  border: 0.25rem solid #7523ce;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+/* Animated square tile pattern */
+body {
+  background-color: #e3cceb; /* Fallback background color */
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.05) 50%, transparent 50%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 50%, transparent 50%);
+  background-size: 100px 100px; /* Adjust the size of the squares */
+  animation: slide 8s linear infinite; /* Adjust animation duration and timing function */
+}
+
+@keyframes slide {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100px 100px; /* Adjust the size of the squares */
+  }
+}
+
+.logo {
+  margin-top: -2px; /* Adjust the margin-top as needed */
+}
+
+.navbar-brand:hover img {
+  transform: scale(1.1); /* Increase size on hover */
+  transition: transform 0.3s ease; /* Add smooth transition */
+}
+
+.navbar-brand img {
+  transition: transform 0.3s ease; /* Add smooth transition for shrinking */
+}
+
+
+.header-text {
+  vertical-align: middle;
+  margin-left: 5px; /* Adjust the margin-left as needed */
+}
+
+
+#addNew {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(193, 151, 248);
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#myProgress {
+  width: 100%;
+  background-color: rgb(214, 218, 255);
+}
+
+#myBar {
+  height: 30px;
+  border-radius: 3px 5px 5px 3px;
+}
+
+#myProgressEdit {
+  width: 100%;
+  background-color: rgb(214, 218, 255);
+}
+
+#myBarEdit {
+  height: 30px;
+  border-radius: 3px 5px 5px 3px;
+}
+
+#myBarStored {
+  height: 30px;
+  border-radius: 3px 5px 5px 3px;
+}
+
+/* Add space between Commission Started / Deadline inputs and Commission Status header */
+#form-add .col-md-6 {
+  margin-bottom: 10px;
+}
+
+#form-add label[for="desc"] {
+  margin-top: 20px; 
+}
+
+/* Add space between Commission Started / Deadline inputs and Commission Status header in edit commission menu */
+#form-edit .col-md-6 {
+  margin-bottom: 10px; 
+}
+
+#form-edit label[for="desc-edit"] {
+  margin-top: 20px; 
+}
+
+
+
+.fa-plus {
+  background-color: #dea5fb;
+  padding: 4px;
+  border: 0.15rem solid #000000;
+  border-radius: 4px;
+}
+
+#commissions {
+  display: flex;
+  flex-direction: column;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  overflow-y: auto;
+}
+
+#commissions div {
+  border: 3px solid #be8ae9;
+  border-radius: 6px;
+  padding: 5px;
+  display: grid;
+  gap: 4px;
+}
+
+#commissions div .options {
+  justify-self: left;
+  display: flex;
+  gap: 25px;
+  padding-left: 20px;
+}
+
+#commissions div .options i {
+  cursor: pointer;
+}
+
+#msg {
+  color: red;
+}
+
+#msg2 {
+  color: red;
+}
+
+#commissions {
+  max-height: 750px;
+  overflow-y: auto;
+}
+
+#form-add .row,
+#form-edit .row {
+  margin-top: 10px; /* Adjust the value as needed */
+}
+
+.card {
+  width: 400px; /* Adjust the width as needed */
+  height: 450px; /* Adjust the height as needed */
+  border: 2px solid #7424cc; /* Apply the purple border */
+}
+
+/* Added padding to the input fields */
+#loginForm input, #signupForm input {
+  padding: 8px; /* Adjust the padding as needed */
+  width: 100%; /* Ensuring the inputs fill the width of the container */
+  box-sizing: border-box; /* Including padding in the width calculation */
+}
+
+/* Added margin-top to the login button */
+#loginForm button, #signupForm button {
+  margin-top: 15px; /* Adjust the margin as needed */
+}
+
+/* Added margin to labels for consistent alignment */
+#loginForm label, #signupForm label {
+  margin-bottom: 5px; /* Adjust the margin as needed */
+  
+}
+
+.centered-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; /* Adjusted height for better visual balance */
+}
+
+.hidden {
+  display: none;
+}
+
+.register-button {
+  margin-left: -12px; /* Adjust margin to align with the username label */
+}
+
+/* Purple border */
+.purple-border {
+  border: 4px solid #7424cc;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(-20px); /* Slide up slightly when hidden */
+  pointer-events: none; /* Disable pointer events when hidden */
+}
