@@ -19,7 +19,8 @@ Create an .env file with your MongoDB connection, MONGO_URI and a SECRET_KEY.
 
 
 **Backend Code**
-Commission.py
+
+**Commission.py**
 
 _Endpoints_
 
@@ -44,28 +45,42 @@ Delete Commission, DELETE /commissions/{commission_id}
 Deletes a commission by its ID.
 
 
-logging_setup.py
+**logging_setup.py**
+
 Console Logging: Logs are displayed on the console.
+
 File Logging: Logs are saved to a file named app.log in the logs directory. Log files are rotated daily.
 
 
-main.py
-Endpoints
+**main.py** _Endpoints_
 /: Displays the login page.
+
 /commissions: Handles commission-related operations.
+
 /portfolios: Handles portfolio-related operations.
+
 /payments: Handles payment-related operations.
+
 /users: Handles user-related operations.
 
-Structure
+**Structure**
+
 main.py: Contains the FastAPI application setup.
+
 commission.py: Defines commission-related endpoints and logic.
+
 portfolio.py: Defines portfolio-related endpoints and logic.
+
 payment.py: Defines payment-related endpoints and logic.
+
 user.py: Defines user-related endpoints and logic.
+
 frontend/: Contains frontend files (e.g., HTML, CSS, JavaScript).
+
 Logging is configured using the logging_setup module.
+
 CORS (Cross-Origin Resource Sharing) is enabled to allow requests from any origin.
+
 Static files (e.g., HTML, CSS, JavaScript) are served from the frontend directory.
 
 
