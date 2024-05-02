@@ -8,6 +8,19 @@ uvicorn main:app --reload
 Create a Logs Folder + Add app.log file to store logs
 Create an .env file with your MongoDB connection, MONGO_URI and a SECRET_KEY.
 
+**Login Page**
+![image](https://github.com/KyraEvjen/CommissionTrackerFinal/assets/156963640/c06eb2e0-11ff-42c9-982a-508b8644f10f)
+**Commission Page**
+![image](https://github.com/KyraEvjen/CommissionTrackerFinal/assets/156963640/a849f130-4327-4e11-8d41-a5ca3c69e7be)
+**Payments Page**
+![image](https://github.com/KyraEvjen/CommissionTrackerFinal/assets/156963640/03cc71dc-9321-4c4d-b04e-587052cb758b)
+**Portfolio Page**
+![image](https://github.com/KyraEvjen/CommissionTrackerFinal/assets/156963640/95beaee6-df9d-4a7f-80cd-4a8847d191e7)
+
+
+
+
+
 **Backend Code**
 Commission.py
 _Endpoints_
