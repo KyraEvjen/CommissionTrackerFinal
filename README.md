@@ -77,6 +77,7 @@ Static files (e.g., HTML, CSS, JavaScript) are served from the frontend director
 
 
 **model.py**
+
 Represents a commission with the following fields:
 - `_id`: Commission ID
 - `mongodb_id`: MongoDB ID (aliased as `_id`)
