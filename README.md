@@ -78,9 +78,9 @@ Represents a commission with the following fields:
 - `title`: Commission title
 - `description`: Commission description
 - `status`: Commission status
-- `width`: Width of the commission
-- `color`: Color of the commission
-- `date`: Date of the commission
+- `width`: Width of the status bar
+- `color`: Color of the status bar
+- `date`: Date commission started
 
 Commission Request Model
 
@@ -88,9 +88,9 @@ Represents a request body for creating or updating a commission with the followi
 - `title`: Commission title
 - `description`: Commission description
 - `status`: Commission status
-- `width`: Width of the commission
-- `color`: Color of the commission
-- `date`: Date of the commission
+- `width`: Width of the status bar
+- `color`: Color of the status bar
+- `date`: Date commission started
 
 User Model
 
@@ -103,16 +103,16 @@ Portfolio Model
 Represents a portfolio with the following fields:
 - `_id`: Portfolio ID
 - `mongodb_id`: MongoDB ID (aliased as `_id`)
-- `name`: Portfolio name
+- `name`: Portfolio Item name
 - `image`: URL of the portfolio image
-- `description`: Portfolio description
+- `description`: Item description
 
 Portfolio Request Model
 
 Represents a request body for creating or updating a portfolio with the following fields:
-- `name`: Portfolio name
+- `name`: Portfolio item name
 - `image`: URL of the portfolio image
-- `description`: Portfolio description
+- `description`: Item description
 
 Payment Model
 
