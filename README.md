@@ -1,3 +1,5 @@
+# Commission Tracker Final
+
 Created by Kyra Evjen, Beth Nipper, and Ken Dompier
 Kyra - Backend, Javascript, CRUD Implementation, 
 Beth - Backend, Javascript, CRUD Implementation, 
@@ -24,7 +26,7 @@ Ken - Frontend, Javascript, Stylizing & CSS
 ![image](https://github.com/KyraEvjen/CommissionTrackerFinal/assets/156963640/7a3bf50a-f3dc-4fc3-8a8a-3eb1ef9eff01)
 
 
-**Backend Code**
+# Backend Code
 
 **Commission.py**
 
@@ -201,7 +203,7 @@ User passwords are hashed using bcrypt for security.
 
 Plans to implement functional Admin/User roles are reminent in the user.py code, but are not currently functional. It is a feature to be added in the future.
 
-**Frontend Code**
+# Frontend Code
 
 **user.js & login.html**
 HTML Structure:
@@ -328,4 +330,11 @@ Payment.html file defines the structure and layout of the Payment page of the we
 
 **faviconFiremax.ico** : Can be replaced by your prefered icon/artist logo. This is Kyra's Favicon / Artist Logo as default
 ![image](https://github.com/KyraEvjen/CommissionTrackerFinal/assets/156963640/f60baee1-8d86-4756-b5bf-a297a18fa301)
+
+
+SFX Folder
+- Contains sounds for the application
+
+Visual Folder
+- Contains exploding gif that was planned to be used in future update when deleting commissions
 
