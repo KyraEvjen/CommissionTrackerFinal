@@ -55,9 +55,6 @@ document.getElementById('addNew').addEventListener('click', () => {
   document.getElementById('myDate').value = formattedDate;
   // Set dateStarted to today's date
   dateStarted = formattedDate;
-
-  // Set the deadline input to blank
-  document.getElementById('deadline').value = '';
 });
 
 // Function to play the "pick1.wav" sound effect
@@ -107,38 +104,18 @@ function refreshCommissions() {
   resetForm();
 }
 
-async function checkListen(id)
-{
-  h = document.getElementById(`checkbox-${id}`);
-    if (h.checked)
-      {
-        console.log(h);
-        return true;
-      }
-    else
-      {
-        console.log("nay, i fear");
-      }
-  }
-  //boxes = document.getElementsByClassName("checkbox");
-
-
-
 
 async function addDel(id)
 {
   const comm = data.find(obj => obj._id === id);
-  console.log("item: ",comm);
   deleteList.push(comm);
 }
 
 async function Delete()
 {
-  console.log(deleteList);
   for(i = 0; i< deleteList.length; i++)
     {
       id = deleteList[i]._id;
-      console.log(id);
       deleteCommission(id);
     }
     deleteList = [];
