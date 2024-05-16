@@ -16,8 +16,9 @@ This project is a commission tracker web application designed to help users mana
 1. Ensure all requirements are installed.
 2. Create a folder named 'logs' and add an 'app.log' file to store logs.
 3. Create an `.env` file with your MongoDB connection, `MONGO_URI`, and a `SECRET_KEY`.
-4. Activate the virtual environment with `.\venv\scripts\activate`.
-5. Run the application using Uvicorn: `uvicorn main:app --reload`.
+4. Create virtual environment with `python -m venv venv`.
+6. Activate the virtual environment with `.\venv\scripts\activate`.
+7. Run the application using Uvicorn: `uvicorn main:app --reload`.
 
 ## Screenshots
 
