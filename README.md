@@ -1,4 +1,4 @@
-# Commission Tracker Final
+# Commission Tracker, Final Project
 
 Created by Kyra Evjen, Beth Nipper, and Ken Dompier
 
